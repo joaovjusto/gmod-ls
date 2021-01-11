@@ -1,19 +1,24 @@
 <template>
   <div class="home">
     <div class="custom d-flex flex-column align-items-start justify-content-between">
-      <div class="p-5 position-top">
+      <div id="server-widget" class="p-5 position-top">
+        <span id="server-name" class="d-block">{{ bindServerInfo.serverName }}</span>
         <div class="d-block">
-          <span class="server-slots">QTD JOGADORES 5</span>
-          <span class="server-gamemode ml-3">GAMEMODE</span>
+          <span id="server-slots" class="tag">{{ bindApiInfo.slots }} players</span>
+          <span id="server-gamemode" class="tag">{{ bindApiInfo.gamemode }}</span>
+          <span id="server-map" class="tag">{{ bindApiInfo.map }}</span>
         </div>
-        <span class="server-name d-block">{{bindServerInfo.serverName}}</span>
-        <span class="server-map">MAPA FODASTICO API</span>
       </div>
       <div class="p-5 position-bottom">
-        <div class="music-wrap d-inline-block">
-          <img src="@/assets/logo.jpg" height="50px" width="50px" class="float-left" alt=""/>
-          <span class="float-right absolute">TITULO GOSTOSO</span>
-          <span class="float-right opacity-0">TITULO GOSTOSO</span>
+        <div id="music-widget" class="tag">
+          <div id="music-img">
+            <div id="music-img-container">
+              <img src="@/assets/music.png" />
+            </div>
+          </div>
+          <div id="music-name">
+            <span>Queen - Show Must Go On</span>
+          </div>
         </div>
       </div>
     </div>
@@ -25,11 +30,14 @@
 import Vue from 'vue';
 // @ts-ignore
 import serverInfo from '@/assets/serverInfo.json';
+// @ts-ignore
+import apiData from '@/assets/demoapidata.json';
 
 export default Vue.extend({
   name: 'Home',
   data() {
     return {
+      bindApiInfo: apiData,
       bindServerInfo: serverInfo,
     };
   },
@@ -48,49 +56,67 @@ export default Vue.extend({
   left: 0;
 }
 
-.music-wrap {
-  position: relative;
+.tag {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  padding: 1% 2%;
 }
 
-.music-wrap span.absolute  {
-  position: absolute;
-  top: 50%;
-  left: 60px;
-  margin-top: -10px;
-  font-size: 16px;
+#music-widget {
+  width: 300px;
+  height: 70px;
+  padding: 0 5%;
 }
 
-.music-wrap img {
+#music-img,
+#music-name {
+  height: 100%;
+  display: table;
+  float: left;
+}
+
+#music-img {
+  margin-right: 30px;
+}
+
+#music-img #music-img-container,
+#music-name span {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#music-img #music-img-container img {
+  width: 40px;
+  height: 40px;
   border-radius: 100%;
 }
 
-.opacity-0 {
-  opacity: 0;
-  padding-left: 15px;
+#music-name span {
+  max-width: 170px;
+  text-align: center;
+  text-transform: uppercase;
+  overflow: hidden;
 }
 
-server-info span {
+#server-widget span {
   text-transform: uppercase;
 }
 
-.server-slots, .server-name {
-  color: #FFF;
+#server-name {
+  color: #fff;
+  font-size: 48px;
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.9);
+  margin-bottom: 2%;
 }
 
-.server-slots {
-  font-size: 21px;
-}
-
-.server-gamemode {
+#server-slots,
+#server-gamemode,
+#server-map {
+  color: var(--primary-color);
   font-size: 16px;
+  font-weight: 400;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  margin-right: 3%;
 }
-
-.server-name {
-  font-size: 32px;
-}
-
-.server-map {
-  font-size: 14px;
-}
-
 </style>
