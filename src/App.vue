@@ -1,32 +1,54 @@
 <template>
+<div style="height: 100%;">
+  <div id="bg-carrousel"></div>
+  <div id="bg-gradient"></div>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view/>
   </div>
+</div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script lang="ts">
+/* eslint-disable @typescript-eslint/ban-ts-ignore */
+import Vue from 'vue';
+// @ts-ignore
+import serverInfo from '@/assets/serverInfo.json';
 
-#nav {
-  padding: 30px;
+export default Vue.extend({
+  name: 'App',
+  data() {
+    return {
+      carrouselIntervalId: 0,
+    };
+  },
+  mounted() {
+    const localServerInfo: any = serverInfo;
+    const root = document.documentElement;
+    root.style.setProperty('--primary-color', localServerInfo.primaryColor);
+    let index: any = 0;
+    this.carrouselIntervalId = window.setInterval(() => {
+      const carrousel: any = document.getElementById('bg-carrousel');
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+      carrousel.style.background = `
+        url("https://picsum.photos/1024/480/?image=${index}")`;
+      carrousel.style.backgroundSize = 'cover';
 
-    &.router-link-exact-active {
-      color: #42b983;
+      index += 1;
+    }, 5000);
+  },
+});
+</script>
+<style lang="scss" scoped>
+  .carousel {
+    height: 100%;
+    .carousel-inner {
+      height: 100%;
+      .carousel-item {
+        height: 100%;
+        img {
+          height: 100%;
+        }
+      }
     }
   }
-}
 </style>
