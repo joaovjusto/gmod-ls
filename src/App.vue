@@ -1,7 +1,11 @@
 <template>
   <div style="height: 100%;">
-    /** * TODO: Desenvolver Carrousel */
-    <div id="bg-carrousel"></div>
+    <Carrousel
+      :imagesUrlList="bindServerInfo.imagesUrlList"
+      cycleTime="3"
+      transitionDuration="1"
+      transitionType="ease-in"
+    />
     <div id="bg-gradient"></div>
     <div id="app">
       <router-view />
@@ -15,22 +19,22 @@ import Vue from 'vue';
 // @ts-ignore
 import serverInfo from '@/assets/serverInfo.json';
 
+import { Carrousel } from '@/components';
+
 export default Vue.extend({
   name: 'App',
+  components: {
+    Carrousel,
+  },
   data() {
     return {
       bindServerInfo: serverInfo,
     };
   },
   mounted() {
-    const localServerInfo: any = serverInfo;
+    const localServerInfo = serverInfo;
     const root = document.documentElement;
     root.style.setProperty('--primary-color', localServerInfo.primaryColor);
-
-    const carrousel: any = document.getElementById('bg-carrousel');
-    carrousel.style.background = `
-    url(https://image.winudf.com/v2/image/Y29tLmdsYWRpYW5ldC5hbmltZXdhbGxwYXBlcnYxX3NjcmVlbl8wX2V5ZnU3cHdo/screen-0.jpg?fakeurl=1&type=.jpg)`;
-    carrousel.style.backgroundSize = 'cover';
   },
 });
 </script>

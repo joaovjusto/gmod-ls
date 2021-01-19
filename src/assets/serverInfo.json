@@ -1,6 +1,10 @@
 {
   "primaryColor": "#114D64",
-  "imageQuantity": 3,
   "musicVolume": "100",
-  "serverName": "[BR] Teddy's Murder Server"
+  "serverName": "[BR] Teddy's Murder Server",  
+  "imagesUrlList": [
+    "https://image.winudf.com/v2/image/Y29tLmdsYWRpYW5ldC5hbmltZXdhbGxwYXBlcnYxX3NjcmVlbl8wX2V5ZnU3cHdo/screen-0.jpg?fakeurl=1&type=.jpg",
+    "https://blog.emania.com.br/wp-content/uploads/2017/02/2-1-1024x640.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Antarctica_blue_white_blue.jpg/800px-Antarctica_blue_white_blue.jpg"
+  ]
 }
