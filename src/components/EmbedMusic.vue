@@ -23,6 +23,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-ignore */
 import Vue from 'vue';
 
+const DEFAULT_VOLUME = 0.7;
+
 const Component = Vue.extend({
   name: 'EmbedMusic',
   props: {
@@ -33,6 +35,7 @@ const Component = Vue.extend({
     },
     volume: {
       type: Number,
+      default: DEFAULT_VOLUME,
       validator: val => val >= 0 && val <= 1,
     },
   },
@@ -56,7 +59,7 @@ const Component = Vue.extend({
     initAudio() {
       this.player = document.getElementById('player');
       this.player.addEventListener('ended', this.onEnding);
-      this.player.volume = this.$props.volume;
+      this.player.volume = Number.isNaN(this.$props.volume) ? DEFAULT_VOLUME : (this.$props.volume);
       this.loadMusic();
       console.log(`Thumb: ${this.music.thumb}`);
     },
