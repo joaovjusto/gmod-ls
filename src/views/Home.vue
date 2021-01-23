@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="p-5 position-bottom">
-        <EmbedMusic :musicsUrlList="bindServerData.musicsUrlList" :apiKey="bindServerData.apiKey" />
+        <EmbedMusic :musicsUrlList="bindServerData.musicsUrlList" />
       </div>
     </div>
   </div>
