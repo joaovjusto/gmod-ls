@@ -27,7 +27,7 @@ const Component = Vue.extend({
     },
     transitionType: {
       type: String,
-      validator: function (value) {
+      validator: function(value) {
         return ['ease', 'linear', 'ease-in', 'ease-out', 'ease-in-out'].indexOf(value) !== -1;
       },
       default: 'ease',
@@ -75,7 +75,8 @@ const Component = Vue.extend({
       return `background: url(${url});`;
     },
     generateStyleHide() {
-      return `transition: ${this.$props.transitionType} ${this.$props.transitionDuration}s; opacity: 0`;
+      return `
+       transition: ${this.$props.transitionType} ${this.$props.transitionDuration}s; opacity: 0`;
     },
     nextIndex() {
       this.index = this.index + 1 >= this.indexMax ? 0 : this.index + 1;
@@ -88,11 +89,11 @@ const Component = Vue.extend({
     this.initBackground();
 
     if (this.indexMax > 1) {
-      this.intervalId = setInterval(this.cycleBackground, this.$props.cycleTime * 1000);
+      this.intervalId = window.setInterval(this.cycleBackground, this.$props.cycleTime * 1000);
     }
   },
   beforeDestroy() {
-    clearInterval(this.intervalId);
+    window.clearInterval(this.intervalId);
   },
 });
 
