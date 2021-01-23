@@ -56,6 +56,7 @@ const Component = Vue.extend({
     initAudio() {
       this.player = document.getElementById('player');
       this.player.addEventListener('ended', this.onEnding);
+      this.player.volume = this.$props.volume;
       this.loadMusic();
       console.log(`Thumb: ${this.music.thumb}`);
     },
