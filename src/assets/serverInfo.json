@@ -1,4 +1,5 @@
 {
+  "apiKey": "AIzaSyCTL5rzlh3FYU8DKlz0icHPHkYyIfRKP6U",
   "primaryColor": "#114D64",
   "musicVolume": "100",
   "serverName": "[BR] Teddy's Murder Server",  
@@ -6,5 +7,25 @@
     "https://image.winudf.com/v2/image/Y29tLmdsYWRpYW5ldC5hbmltZXdhbGxwYXBlcnYxX3NjcmVlbl8wX2V5ZnU3cHdo/screen-0.jpg?fakeurl=1&type=.jpg",
     "https://blog.emania.com.br/wp-content/uploads/2017/02/2-1-1024x640.jpg",
     "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Antarctica_blue_white_blue.jpg/800px-Antarctica_blue_white_blue.jpg"
+  ],
+  "musicsUrlList": [
+    {
+      "title": "Audio 1",
+      "artist": "Free Sound",
+      "url": "audios/audio1.ogg",
+      "thumb": "https://www.equisupermarket.co.uk/img/owning-your-very-first-horse.jpg"
+    },
+    {
+      "title": "Audio 2",
+      "artist": "Free Sound",
+      "url": "audios/audio2.ogg",
+      "thumb": "https://www.desenhoonline.com/site/wp-content/uploads/avatar-simpson.jpg"
+    },
+    {
+      "title": "Audio 3",
+      "artist": "Free Sound",
+      "url": "audios/audio3.ogg",
+      "thumb": "https://www.equisupermarket.co.uk/img/owning-your-very-first-horse.jpg"
+    }
   ]
 }

@@ -26,5 +26,18 @@ html {
       height: 100%;
       z-index: 99;
     }
+    #embed-music #channel {
+      opacity: 0.4;
+      font-size: 14px;
+    }
+    .animation-ease-1s {
+      transition: ease 1s;
+    }
+    .tag {
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+      padding: 1% 2%;
+    }
   }
 }
