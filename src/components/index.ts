@@ -1,3 +1,4 @@
-import Carrousel from '@/components/Carrousel.vue';
+import BackgroundGradient from '@/components/BackgroundGradient.vue';
+import EmbedMusic from '@/components/EmbedMusic.vue';
 
-export { Carrousel };
+export { BackgroundGradient, EmbedMusic };

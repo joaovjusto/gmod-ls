@@ -17,21 +17,7 @@ html {
       color: var(--primary-color);
     }
 
-    #bg-gradient {
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      top: 0;
-      left: 0;
-      opacity: 1;
-      // background: orangered;
-      background: linear-gradient(
-        to right,
-        var(--primary-color),
-        rgba(0, 0, 0, 0)
-      );
-      z-index: 10;
-    }
+
     #app {
       position: absolute;
       top: 0;

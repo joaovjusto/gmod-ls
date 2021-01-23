@@ -2,11 +2,17 @@
   <div style="height: 100%;">
     <Carrousel
       :imagesUrlList="bindServerInfo.imagesUrlList"
-      cycleTime="3"
-      transitionDuration="1"
+      :cycleTime="3"
+      :transitionDuration="1"
       transitionType="ease-in"
     />
-    <div id="bg-gradient"></div>
+    <BackgroundGradient
+      colorStart="#114D64"
+      colorEnd="#000"
+      opacityStart="1"
+      opacityEnd="0"
+      ratio="0.2"
+    />
     <div id="app">
       <router-view />
     </div>
@@ -19,11 +25,12 @@ import Vue from 'vue';
 // @ts-ignore
 import serverInfo from '@/assets/serverInfo.json';
 
-import { Carrousel } from '@/components';
+import { BackgroundGradient, Carrousel } from '@/components';
 
 export default Vue.extend({
   name: 'App',
   components: {
+    BackgroundGradient,
     Carrousel,
   },
   data() {
