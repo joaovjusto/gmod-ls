@@ -9,9 +9,9 @@
     <BackgroundGradient
       colorStart="#114D64"
       colorEnd="#000"
-      opacityStart="1"
-      opacityEnd="0"
-      ratio="0.2"
+      :opacityStart="1"
+      :opacityEnd="0"
+      :ratio="0.2"
     />
     <div id="app">
       <router-view />
