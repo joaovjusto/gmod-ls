@@ -1,14 +1,14 @@
 <template>
-  <div id="bg-gradient">
+  <div class="bg-gradient">
     <svg xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="lgrad" x1="0%" y1="50%" x2="100%" y2="50%">
+        <linearGradient :id="hash" x1="0%" y1="50%" x2="100%" y2="50%">
           <stop offset="0%" :style="styleStart" />
           <stop :offset="offsetStart" :style="styleStart" />
           <stop offset="100%" :style="styleEnd" />
         </linearGradient>
       </defs>
-      <rect x="0" y="0" width="100%" height="100%" fill="url(#lgrad)" />
+      <rect x="0" y="0" width="100%" height="100%" :fill="url" />
     </svg>
   </div>
 </template>
@@ -16,6 +16,7 @@
 <script lang="ts">
 /* eslint-disable @typescript-eslint/ban-ts-ignore */
 import Vue from 'vue';
+import { nanoid } from 'nanoid';
 
 const Component = Vue.extend({
   name: 'BackgroundGradient',
@@ -47,9 +48,11 @@ const Component = Vue.extend({
   },
   data() {
     return {
+      hash: nanoid(5),
       offsetStart: '',
       styleEnd: '',
       styleStart: '',
+      url: '',
     };
   },
   methods: {
@@ -57,6 +60,7 @@ const Component = Vue.extend({
       this.offsetStart = `${this.$props.ratio * 100}%`;
       this.styleEnd = `stop-color:${this.$props.colorEnd};stop-opacity:${this.$props.opacityEnd}`;
       this.styleStart = `stop-color:${this.$props.colorStart};stop-opacity:${this.$props.opacityStart}`;
+      this.url = `url(#${this.hash})`;
     },
   },
   beforeMount() {
@@ -68,7 +72,7 @@ export default Component;
 </script>
 
 <style scoped>
-#bg-gradient {
+.bg-gradient {
   width: 100%;
   height: 100%;
   background: transparent;
@@ -77,7 +81,7 @@ export default Component;
   left: 0;
   z-index: 10;
 }
-#bg-gradient svg {
+.bg-gradient svg {
   width: 100%;
   height: 100%;
 }
