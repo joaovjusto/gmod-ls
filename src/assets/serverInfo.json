@@ -1,28 +1,15 @@
 {
-  "primaryColor": "#114D64",
+  "primaryColor": "#0C1F4A",
   "imagesUrlList": [
-    "https://image.winudf.com/v2/image/Y29tLmdsYWRpYW5ldC5hbmltZXdhbGxwYXBlcnYxX3NjcmVlbl8wX2V5ZnU3cHdo/screen-0.jpg?fakeurl=1&type=.jpg",
-    "https://blog.emania.com.br/wp-content/uploads/2017/02/2-1-1024x640.jpg",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Antarctica_blue_white_blue.jpg/800px-Antarctica_blue_white_blue.jpg"
+    "https://images8.alphacoders.com/679/thumb-1920-679478.jpg",
+    "https://images8.alphacoders.com/540/thumb-1920-540882.jpg"
   ],
   "musicsUrlList": [
     {
-      "title": "Audio 1",
-      "artist": "Free Sound",
-      "url": "audios/audio1.ogg",
-      "thumb": "https://www.equisupermarket.co.uk/img/owning-your-very-first-horse.jpg"
-    },
-    {
-      "title": "Audio 2",
-      "artist": "Free Sound",
-      "url": "audios/audio2.ogg",
-      "thumb": "https://www.desenhoonline.com/site/wp-content/uploads/avatar-simpson.jpg"
-    },
-    {
-      "title": "Audio 3",
-      "artist": "Free Sound",
-      "url": "audios/audio3.ogg",
-      "thumb": "https://www.equisupermarket.co.uk/img/owning-your-very-first-horse.jpg"
+      "title": "We are one",
+      "artist": "Vexent",
+      "url": "audios/We-Are-One-Vexento.ogg",
+      "thumb": "https://i.ytimg.com/vi/Ssvu2yncgWU/maxresdefault.jpg"
     }
   ]
 }
