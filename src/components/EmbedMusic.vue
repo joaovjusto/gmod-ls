@@ -59,7 +59,7 @@ const Component = Vue.extend({
     initAudio() {
       this.player = document.getElementById('player');
       this.player.addEventListener('ended', this.onEnding);
-      this.player.volume = Number.isNaN(this.$props.volume) ? DEFAULT_VOLUME : (this.$props.volume);
+      this.updateVolume();
       this.loadMusic();
       console.log(`Thumb: ${this.music.thumb}`);
     },
@@ -71,8 +71,16 @@ const Component = Vue.extend({
     nextIndex() {
       this.index = this.index + 1 >= this.indexMax ? 0 : this.index + 1;
     },
+    updateVolume() {
+      this.player.volume = Number.isNaN(this.$props.volume) ? DEFAULT_VOLUME : this.$props.volume;
+    },
     onEnding() {
       this.loadMusic();
+    },
+  },
+  watch: {
+    volume: function() {
+      this.updateVolume();
     },
   },
   mounted() {
