@@ -16,6 +16,9 @@ module.exports = {
     'space-before-function-paren': 0,
     'import/prefer-default-export': 'off',
     'arrow-parens': 0,
-    'no-plusplus': 'off'
+    'no-plusplus': 'off',
+    'operator-linebreak': 0,
+    'object-curly-newline': 0,
+    'no-console': 0,
   },
 };
