@@ -7,7 +7,7 @@
       transitionType="ease-in"
     />
     <BackgroundGradient
-      colorStart="#114D64"
+      :colorStart="primaryColor"
       colorEnd="#000"
       :opacityStart="1"
       :opacityEnd="0"
@@ -36,12 +36,12 @@ export default Vue.extend({
   data() {
     return {
       bindServerInfo: serverInfo,
+      primaryColor: serverInfo.primaryColor,
     };
   },
   mounted() {
-    const localServerInfo = serverInfo;
     const root = document.documentElement;
-    root.style.setProperty('--primary-color', localServerInfo.primaryColor);
+    root.style.setProperty('--primary-color', this.primaryColor);
   },
 });
 </script>
