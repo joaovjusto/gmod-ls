@@ -6,13 +6,6 @@
       :transitionDuration="1"
       transitionType="ease-in"
     />
-    <BackgroundGradient
-      :colorStart="primaryColor"
-      colorEnd="#000"
-      :opacityStart="0.8"
-      :opacityEnd="0"
-      :ratio="0.2"
-    />
     <div id="app">
       <router-view />
     </div>
@@ -27,12 +20,11 @@ import config from '@/assets/config.json';
 // @ts-ignore
 import serverInfo from '@/assets/serverInfo.json';
 
-import { BackgroundGradient, Carrousel } from '@/components';
+import { Carrousel } from '@/components';
 
 export default Vue.extend({
   name: 'App',
   components: {
-    BackgroundGradient,
     Carrousel,
   },
   data() {
