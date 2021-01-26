@@ -54,7 +54,7 @@ const Component = Vue.extend({
   },
   methods: {
     generateThumbStyle() {
-      this.music.thumb = `background: url(${this.music.thumb}`;
+      this.music.thumb = `background: url(${this.music.thumb})`;
     },
     initAudio() {
       this.player = document.getElementById('player');
