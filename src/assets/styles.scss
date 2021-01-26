@@ -13,7 +13,8 @@ html {
       font-family: 'Exo 2', sans-serif;
     }
     span {
-      color: var(--primary-color);
+      // color: var(--primary-color);
+      color: #0C1F4A;
     }
 
     #app {
@@ -22,7 +23,8 @@ html {
       position: absolute;
       top: 0;
       left: 0;
-      padding: var(--body-padding) !important;
+      // padding: var(--body-padding) !important;
+      padding: 3rem;
       z-index: 99;
     }
 
@@ -76,8 +78,8 @@ html {
       margin-right: 2%;
     }
 
-    #server-stats #name::before {
-      background:red;
+    #server-stats .bg-gradient {
+      margin-left: -3rem;
     }
   }
 }
