@@ -3,11 +3,11 @@
     <div id="primary" class="d-block">
       <span id="name" class="d-block">{{ details.servername }}</span>
       <BackgroundGradient
-        colorStart="rgba(255, 255, 255, 0.1)"
-        colorEnd="#000"
-        :opacityStart="0.2"
+        colorStart="#0C1F4A"
+        colorEnd="#fff"
+        :opacityStart="1"
         :opacityEnd="0"
-        :ratio="0.2"
+        :ratio="0.3"
       />
     </div>
     <div id="secundary" class="d-block">
@@ -47,7 +47,7 @@ export default Component;
 }
 
 #server-stats .bg-gradient {
-  margin-left: calc(var(--body-padding) * -1) !important;
+  opacity: 0.3;
   z-index: -1 !important;
 }
 </style>
