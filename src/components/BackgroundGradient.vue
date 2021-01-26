@@ -16,7 +16,6 @@
 <script lang="ts">
 /* eslint-disable @typescript-eslint/ban-ts-ignore */
 import Vue from 'vue';
-import { nanoid } from 'nanoid';
 
 const Component = Vue.extend({
   name: 'BackgroundGradient',
@@ -48,7 +47,7 @@ const Component = Vue.extend({
   },
   data() {
     return {
-      hash: nanoid(5),
+      hash: '',
       offsetStart: '',
       styleEnd: '',
       styleStart: '',
@@ -60,6 +59,7 @@ const Component = Vue.extend({
       this.offsetStart = `${this.$props.ratio * 100}%`;
       this.styleEnd = `stop-color:${this.$props.colorEnd};stop-opacity:${this.$props.opacityEnd}`;
       this.styleStart = `stop-color:${this.$props.colorStart};stop-opacity:${this.$props.opacityStart}`;
+      this.hash = `grad${document.getElementsByClassName('bg-gradient').length}`;
       this.url = `url(#${this.hash})`;
     },
   },
