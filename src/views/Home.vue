@@ -1,12 +1,10 @@
 <template>
-  <div class="home">
-    <div class="custom d-flex flex-column align-items-start justify-content-between">
-      <div class="p-5 position-top">
-        <ServerStats :details="details" />
-      </div>
-      <div class="p-5 position-bottom">
-        <EmbedMusic :musicsUrlList="bindServerData.musicsUrlList" :volume="details.volume" />
-      </div>
+  <div id="home">
+    <div class="position-top">
+      <ServerStats :details="details" />
+    </div>
+    <div class="position-bottom">
+      <EmbedMusic :musicsUrlList="bindServerData.musicsUrlList" :volume="details.volume" />
     </div>
   </div>
 </template>

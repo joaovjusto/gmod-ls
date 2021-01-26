@@ -99,9 +99,7 @@ export default Component;
 }
 
 #embed-music #player-wrap {
-  display: block;
-  position: absolute;
-  top: -300%;
+  display: none;
 }
 
 #embed-music #summary-wrap {

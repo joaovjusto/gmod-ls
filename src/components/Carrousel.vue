@@ -1,7 +1,7 @@
 <template>
-  <div id="bg-carrousel">
-    <div id="bg-current" :style="bgCurrent.style" />
-    <div id="bg-incoming" :style="bgIncoming.style" />
+  <div class="bg-carrousel">
+    <div class="bg-current" :style="bgCurrent.style" />
+    <div class="bg-incoming" :style="bgIncoming.style" />
   </div>
 </template>
 
@@ -101,9 +101,9 @@ export default Component;
 </script>
 
 <style scoped>
-#bg-carrousel,
-#bg-carrousel #bg-current,
-#bg-carrousel #bg-incoming {
+.bg-carrousel,
+.bg-carrousel .bg-current,
+.bg-carrousel .bg-incoming {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -111,20 +111,14 @@ export default Component;
   left: 0;
   z-index: 0;
 }
-#bg-carrousel #bg-current,
-#bg-carrousel #bg-incoming {
+.bg-carrousel .bg-current,
+.bg-carrousel .bg-incoming {
   background-size: cover !important;
 }
-#bg-carrousel #bg-current {
+.bg-carrousel .bg-current {
   z-index: 2;
 }
-#bg-carrousel #bg-incoming {
+.bg-carrousel .bg-incoming {
   z-index: 1;
-}
-#bg-carrousel .animate {
-  transition: ease 1s;
-}
-#bg-carrousel .hide {
-  opacity: 0;
 }
 </style>
