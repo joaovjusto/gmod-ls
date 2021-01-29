@@ -3,17 +3,37 @@
     <div id="player-wrap">
       <audio id="player" :src="music.url" autoplay allow="autoplay" />
     </div>
-    <div id="summary-wrap" class="animation-ease-1s">
-      <div id="thumb-wrap" class="summary-data-wrap">
-        <div class="summary-data">
-          <div id="thumb" :style="music.thumb" />
-        </div>
+    <div id="summary-wrap" class="summary-data-wrap animation-ease-1s">
+      <div id="thumb-wrap" class="summary-data">
+        <content-placeholders
+          id="thumb"
+          :style="!(flags.musicLoaded) ? 'display: block' : 'display: none'"
+        >
+          <content-placeholders-img />
+        </content-placeholders>
+        <img
+          id="thumb"
+          :src="music.thumb"
+          :style="flags.musicLoaded ? 'display: block' : 'display: none'"
+        />
       </div>
-      <div id="info-wrap" class="summary-data-wrap">
-        <div id="info" class="summary-data">
-          <span id="name">{{ music.title }}</span>
-          <span id="channel">{{ music.artist }}</span>
-        </div>
+      <div id="info-wrap" class="summary-data">
+        <content-placeholders
+          id="thumb"
+          :style="!(flags.musicLoaded) ? 'display: block' : 'display: none'"
+        >
+          <content-placeholders-text :lines="2" style="width: 200px" />
+        </content-placeholders>
+        <span
+          id="name"
+          :style="(flags.musicLoaded) ? 'display: block' : 'display: none'"
+          >{{ music.title }}</span
+        >
+        <span
+          id="channel"
+          :style="(flags.musicLoaded) ? 'display: block' : 'display: none'"
+          >{{ music.artist }}</span
+        >
       </div>
     </div>
   </div>
@@ -41,6 +61,10 @@ const Component = Vue.extend({
   },
   data() {
     return {
+      flags: {
+        musicLoaded: false,
+        thumbLoaded: false,
+      },
       index: 0,
       indexMax: this.$props.musicsUrlList.length,
       music: {
@@ -50,22 +74,19 @@ const Component = Vue.extend({
         url: '',
       },
       player: '',
+      thumb: '',
     };
   },
   methods: {
-    generateThumbStyle() {
-      this.music.thumb = `background: url(${this.music.thumb})`;
-    },
     initAudio() {
       this.player = document.getElementById('player');
-      this.player.addEventListener('ended', this.onEnding);
+      this.thumb = document.getElementById('thumb');
+      this.player.addEventListener('ended', this.onAudioEnding);
+      this.player.addEventListener('loadeddata', this.onAudioLoad);
       this.updateVolume();
-      this.loadMusic();
-      console.log(`Thumb: ${this.music.thumb}`);
     },
     loadMusic() {
       this.music = this.$props.musicsUrlList[this.index];
-      this.generateThumbStyle();
       this.nextIndex();
     },
     nextIndex() {
@@ -74,8 +95,17 @@ const Component = Vue.extend({
     updateVolume() {
       this.player.volume = Number.isNaN(this.$props.volume) ? DEFAULT_VOLUME : this.$props.volume;
     },
-    onEnding() {
+    onAudioEnding() {
+      this.resetFlags();
       this.loadMusic();
+    },
+    onAudioLoad() {
+      this.flags.musicLoaded = true;
+    },
+    resetFlags() {
+      this.flags = {
+        musicLoaded: false,
+      };
     },
   },
   watch: {
@@ -85,6 +115,7 @@ const Component = Vue.extend({
   },
   mounted() {
     this.initAudio();
+    this.loadMusic();
   },
 });
 
@@ -94,8 +125,7 @@ export default Component;
 <style scoped>
 #embed-music {
   width: 300px;
-  height: 70px;
-  padding: 0 5%;
+  padding: 4% 5%;
 }
 
 #embed-music #player-wrap {
@@ -104,7 +134,7 @@ export default Component;
 
 #embed-music #summary-wrap {
   width: 100%;
-  height: 100%;
+  overflow: hidden;
 }
 
 #summary-wrap #thumb-wrap {
@@ -120,17 +150,10 @@ export default Component;
 #summary-wrap #thumb {
   width: 45px;
   height: 45px;
-  background-position: center !important;
-  background-size: cover !important;
   border-radius: 100%;
 }
 
-#summary-wrap #info {
-  padding-left: 5%;
-}
-
-#summary-wrap #info span {
-  line-height: 110%;
+#summary-wrap #info-wrap span {
   display: block;
 }
 

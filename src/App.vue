@@ -16,8 +16,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-ignore */
 import Vue from 'vue';
 // @ts-ignore
-import config from '@/assets/config.json';
-// @ts-ignore
 import serverInfo from '@/assets/serverInfo.json';
 
 import { Carrousel } from '@/components';
@@ -36,7 +34,6 @@ export default Vue.extend({
   mounted() {
     const root = document.documentElement;
     root.style.setProperty('--primary-color', this.primaryColor);
-    root.style.setProperty('--body-padding', config.bodyPadding);
   },
 });
 </script>
