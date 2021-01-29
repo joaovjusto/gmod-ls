@@ -1,11 +1,15 @@
 <template>
-<div style="height: 100%;">
-  <div id="bg-carrousel"></div>
-  <div id="bg-gradient"></div>
-  <div id="app">
-    <router-view/>
+  <div style="height: 100%;">
+    <Carrousel
+      :imagesUrlList="bindServerInfo.imagesUrlList"
+      :cycleTime="10"
+      :transitionDuration="1"
+      transitionType="ease-in"
+    />
+    <div id="app">
+      <router-view />
+    </div>
   </div>
-</div>
 </template>
 
 <script lang="ts">
@@ -14,41 +18,23 @@ import Vue from 'vue';
 // @ts-ignore
 import serverInfo from '@/assets/serverInfo.json';
 
+import { Carrousel } from '@/components';
+
 export default Vue.extend({
   name: 'App',
+  components: {
+    Carrousel,
+  },
   data() {
     return {
-      carrouselIntervalId: 0,
+      bindServerInfo: serverInfo,
+      primaryColor: serverInfo.primaryColor,
     };
   },
   mounted() {
-    const localServerInfo: any = serverInfo;
     const root = document.documentElement;
-    root.style.setProperty('--primary-color', localServerInfo.primaryColor);
-    let index: any = 0;
-    this.carrouselIntervalId = window.setInterval(() => {
-      const carrousel: any = document.getElementById('bg-carrousel');
-
-      carrousel.style.background = `
-        url("https://picsum.photos/1024/480/?image=${index}")`;
-      carrousel.style.backgroundSize = 'cover';
-
-      index += 1;
-    }, 5000);
+    root.style.setProperty('--primary-color', this.primaryColor);
   },
 });
 </script>
-<style lang="scss" scoped>
-  .carousel {
-    height: 100%;
-    .carousel-inner {
-      height: 100%;
-      .carousel-item {
-        height: 100%;
-        img {
-          height: 100%;
-        }
-      }
-    }
-  }
-</style>
+<style lang="scss" scoped></style>

@@ -1,21 +1,10 @@
 <template>
-  <div class="home">
-    <div class="custom d-flex flex-column align-items-start justify-content-between">
-      <div class="p-5 position-top">
-        <div class="d-block">
-          <span class="server-slots">QTD JOGADORES 5</span>
-          <span class="server-gamemode ml-3">GAMEMODE</span>
-        </div>
-        <span class="server-name d-block">{{bindServerInfo.serverName}}</span>
-        <span class="server-map">MAPA FODASTICO API</span>
-      </div>
-      <div class="p-5 position-bottom">
-        <div class="music-wrap d-inline-block">
-          <img src="@/assets/logo.jpg" height="50px" width="50px" class="float-left" alt=""/>
-          <span class="float-right absolute">TITULO GOSTOSO</span>
-          <span class="float-right opacity-0">TITULO GOSTOSO</span>
-        </div>
-      </div>
+  <div id="home">
+    <div class="position-top">
+      <ServerStats :details="details" />
+    </div>
+    <div class="position-bottom">
+      <EmbedMusic :musicsUrlList="bindServerData.musicsUrlList" :volume="details.volume" />
     </div>
   </div>
 </template>
@@ -23,21 +12,55 @@
 <script lang="ts">
 /* eslint-disable @typescript-eslint/ban-ts-ignore */
 import Vue from 'vue';
+import { EmbedMusic, ServerStats } from '@/components';
 // @ts-ignore
-import serverInfo from '@/assets/serverInfo.json';
+import serverData from '@/assets/serverInfo.json';
 
 export default Vue.extend({
   name: 'Home',
+  components: {
+    EmbedMusic,
+    ServerStats,
+  },
   data() {
     return {
-      bindServerInfo: serverInfo,
+      bindServerData: serverData,
+      details: {
+        servername: "Garry's Mod",
+        maxplayers: '16',
+        gamemode: 'sandbox',
+        mapname: 'gm_murder',
+      },
+      detailsIntervalId: 0,
     };
+  },
+  methods: {
+    getDetails() {
+      let intervalLoopCount = 0;
+
+      this.detailsIntervalId = window.setInterval(() => {
+        const detailsText = document.getElementById('gamedetails').innerText;
+
+        if (intervalLoopCount >= 10) {
+          window.clearInterval(this.detailsIntervalId);
+        } else if (detailsText !== '') {
+          this.details = JSON.parse(detailsText);
+          window.clearInterval(this.detailsIntervalId);
+        }
+
+        intervalLoopCount++;
+      }, 200);
+    },
+  },
+  mounted() {
+    this.getDetails();
   },
 });
 </script>
 
 <style lang="scss" scoped>
 .position-top {
+  width: 100%;
   position: absolute;
   top: 0;
   left: 0;
@@ -47,50 +70,4 @@ export default Vue.extend({
   bottom: 0;
   left: 0;
 }
-
-.music-wrap {
-  position: relative;
-}
-
-.music-wrap span.absolute  {
-  position: absolute;
-  top: 50%;
-  left: 60px;
-  margin-top: -10px;
-  font-size: 16px;
-}
-
-.music-wrap img {
-  border-radius: 100%;
-}
-
-.opacity-0 {
-  opacity: 0;
-  padding-left: 15px;
-}
-
-server-info span {
-  text-transform: uppercase;
-}
-
-.server-slots, .server-name {
-  color: #FFF;
-}
-
-.server-slots {
-  font-size: 21px;
-}
-
-.server-gamemode {
-  font-size: 16px;
-}
-
-.server-name {
-  font-size: 32px;
-}
-
-.server-map {
-  font-size: 14px;
-}
-
 </style>

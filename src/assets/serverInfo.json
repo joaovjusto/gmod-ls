@@ -1,6 +1,15 @@
 {
-    "primaryColor": "yellow",
-    "imageQuantity": 3,
-    "musicVolume": "100",
-    "serverName": "PIKUDOS"
+  "primaryColor": "#0C1F4A",
+  "imagesUrlList": [
+    "https://wallpaperaccess.com/full/42271.jpg",
+    "https://i.pinimg.com/originals/e3/15/2c/e3152c556938ba420065dc436b6f9370.png"
+  ],
+  "musicsUrlList": [
+    {
+      "title": "We are one",
+      "artist": "Vexent",
+      "url": "audios/We-Are-One-Vexento.ogg",
+      "thumb": "https://i.ytimg.com/vi/Ssvu2yncgWU/maxresdefault.jpg"
+    }
+  ]
 }
