@@ -1,10 +1,10 @@
 <template>
   <div style="height: 100%;">
     <Carrousel
-      :imagesUrlList="bindServerInfo.imagesUrlList"
-      :cycleTime="10"
-      :transitionDuration="1"
-      transitionType="ease-in"
+      :images-url-list="bindServerInfo.imagesUrlList"
+      :cycle-time="10"
+      :transition-duration="1"
+      transition-type="ease-in"
     />
     <div id="app">
       <router-view />
