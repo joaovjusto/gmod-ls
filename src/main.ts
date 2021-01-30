@@ -6,6 +6,7 @@ import router from './router';
 import store from './store';
 
 import '@/assets/styles.scss';
+// @ts-ignore
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import 'vue-content-placeholders/dist/vue-content-placeholders.css';
